@@ -4,14 +4,16 @@ import { StoreProvider } from '@/lib/store';
 import HomeScreen from './HomeScreen';
 import PostScreen from './PostScreen';
 import JitenScreen from './JitenScreen';
+import ZukanScreen from './ZukanScreen';
 import ProfileScreen from './ProfileScreen';
 
-type ScreenId = 's-top' | 's-post' | 's-jiten' | 's-prof';
+type ScreenId = 's-top' | 's-post' | 's-jiten' | 's-zukan' | 's-prof';
 
 const NAV: Array<{ id: ScreenId; icon: string; label: string }> = [
   { id: 's-top', icon: '🏠', label: 'ホーム' },
   { id: 's-post', icon: '🎙️', label: 'のこす' },
   { id: 's-jiten', icon: '📖', label: 'じてん' },
+  { id: 's-zukan', icon: '🔡', label: 'ずかん' },
   { id: 's-prof', icon: '🐤', label: 'プロフ' },
 ];
 
@@ -27,6 +29,7 @@ export default function PhoneShell() {
             <HomeScreen active={screen === 's-top'} />
             <PostScreen active={screen === 's-post'} />
             <JitenScreen active={screen === 's-jiten'} />
+            <ZukanScreen active={screen === 's-zukan'} />
             <ProfileScreen active={screen === 's-prof'} />
           </div>
           <nav className="nav">

@@ -245,6 +245,45 @@ h2.title{font-size:19px;margin:3px 0 14px}
 .sprite-pad.a-squish svg{animation:squish 1.6s ease-in-out infinite}
 .sprite-pad.a-breathe svg{animation:breathe 3.4s ease-in-out infinite}
 
+/* ===== ZUKAN (あかちゃんずかん / 50-on encyclopedia) ===== */
+.zk-reveal{display:flex;gap:12px;align-items:stretch;border-radius:24px;padding:14px;margin-bottom:18px;cursor:pointer;
+  box-shadow:0 16px 30px -18px var(--shadow);transition:transform .15s ease;position:relative;overflow:hidden}
+.zk-reveal:active{transform:scale(.99)}
+.zk-reveal.charm{background:linear-gradient(165deg,#fff 0%, #fdeef4 100%)}
+.zk-reveal.trivia{background:linear-gradient(165deg,#fff 0%, #e3f5f3 100%)}
+.zk-tile.big{flex:0 0 72px;display:flex;align-items:center;justify-content:center;font-size:40px;border-radius:18px;color:#fff}
+.zk-reveal.charm .zk-tile.big{background:linear-gradient(135deg,var(--pink),var(--pink-deep))}
+.zk-reveal.trivia .zk-tile.big{background:linear-gradient(135deg,var(--turq),var(--turq-deep))}
+.zk-body{flex:1;display:flex;flex-direction:column;justify-content:center;gap:6px;min-width:0}
+.zk-badge{align-self:flex-start;font-family:"DotGothic16",monospace;font-size:10px;letter-spacing:.06em;color:#fff;
+  background:var(--sun);padding:3px 9px;border-radius:999px}
+.zk-reveal.trivia .zk-badge{background:var(--turq-deep)}
+.zk-text{font-size:14px;line-height:1.55}
+.zk-reveal.flip{animation:zkflip .4s ease}
+@keyframes zkflip{0%{transform:perspective(600px) rotateX(0)}50%{transform:perspective(600px) rotateX(-14deg);opacity:.65}100%{transform:perspective(600px) rotateX(0)}}
+
+.zk-grid{display:flex;flex-direction:column;gap:7px}
+.zk-row{display:flex;gap:7px}
+.zk-cell{flex:0 0 calc((100% - 28px)/5);aspect-ratio:1;border:none;border-radius:14px;background:#fff;color:var(--ink-soft);
+  font-family:inherit;font-size:20px;cursor:pointer;box-shadow:0 4px 12px -10px var(--shadow);
+  transition:transform .12s ease,background .18s ease,color .18s ease;position:relative}
+.zk-cell:active{transform:scale(.94)}
+.zk-cell.open{color:var(--ink);background:#fff}
+.zk-cell.open::after{content:"●";position:absolute;top:5px;right:7px;font-size:7px;color:var(--pink)}
+.zk-cell.focus{background:var(--pink);color:#fff;box-shadow:0 8px 16px -8px var(--pink-deep)}
+.zk-cell.today{box-shadow:0 0 0 2px var(--sun),0 6px 14px -8px var(--shadow)}
+.zk-cell.today.focus{box-shadow:0 0 0 2px var(--sun),0 8px 16px -8px var(--pink-deep)}
+
+.zk-progress{margin:16px 2px 0;display:flex;align-items:center;gap:10px}
+.zk-pbar{flex:1;height:8px;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1.5px #efe2cf;overflow:hidden}
+.zk-pbar i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--pink),var(--sun));transition:width .4s ease}
+.zk-pnum{font-family:"DotGothic16",monospace;font-size:11px;color:var(--ink-soft);white-space:nowrap}
+.zk-disclaimer{font-size:10px;color:var(--ink-soft);margin-top:12px;text-align:center}
+
+@media (prefers-reduced-motion: reduce){
+  .zk-reveal.flip{animation:none}
+}
+
 /* ===== mobile: phone fills the viewport (no fake bezel/notch) ===== */
 @media (max-width:480px){
   body{padding:0;align-items:stretch;min-height:100dvh}
