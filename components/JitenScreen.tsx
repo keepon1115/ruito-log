@@ -18,7 +18,7 @@ const KIMOCHI = [
 /** A tappable card that flashes its "playing" animation + chime. */
 function usePlayFlash(ms: number) {
   const [id, setId] = useState<string | null>(null);
-  const t = useRef<ReturnType<typeof setTimeout>>();
+  const t = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const fire = (key: string) => {
     chime();
     setId(key);

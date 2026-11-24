@@ -46,7 +46,7 @@ export default function ZukanScreen({ active }: { active: boolean }) {
 
   // Brief flip pulse when the face or focused entry changes.
   const [flip, setFlip] = useState(0);
-  const flipTimer = useRef<ReturnType<typeof setTimeout>>();
+  const flipTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const pulse = () => {
     setFlip((n) => n + 1);
     clearTimeout(flipTimer.current);

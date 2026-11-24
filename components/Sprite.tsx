@@ -1,5 +1,6 @@
 'use client';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import type React from 'react';
 import type { GrowthStage } from '@/lib/age';
 import { buildRows, rowsToSvgInner, EYES_OPEN, EYES_CLOSED, M_SMALL, M_BIG } from '@/lib/sprite';
 import { chime } from '@/lib/sound';
@@ -39,7 +40,7 @@ const STATES: Record<StateName, MoodDef> = {
   poop: { eyes: EYES_OPEN, mouth: M_SMALL, mood: 'おむつ かえて〜', bubble: 'うんち でた！', fx: 'poop' },
 };
 
-const FX: Record<string, JSX.Element | null> = {
+const FX: Record<string, React.JSX.Element | null> = {
   '': null,
   hearts: (
     <>
@@ -76,7 +77,7 @@ export default function Sprite({
   // override grid for transient pokes (e.g. poop→clean shows happy face) and custom moods
   const [override, setOverride] = useState<{ eyes: string; mouth: string; bubble: string; fx: MoodDef['fx']; mood: string; pad: string } | null>(null);
   const busy = useRef(false);
-  const timer = useRef<ReturnType<typeof setTimeout>>();
+  const timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
   const showCustomMood = useCallback((m: SpriteMood) => {
     const f = FACE[m.face];

@@ -26,7 +26,7 @@ export default function HomeScreen({ active }: { active: boolean }) {
   const mem = memories.length ? memories[Math.min(idx, memories.length - 1)] : null;
 
   const [playing, setPlaying] = useState(false);
-  const playTimer = useRef<ReturnType<typeof setTimeout>>();
+  const playTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   // resolve a signed URL for stored images (paths); object/blob URLs used as-is
